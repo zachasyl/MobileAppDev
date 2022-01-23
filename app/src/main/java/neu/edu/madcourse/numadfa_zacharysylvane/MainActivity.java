@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Button button;
-    TextView txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
