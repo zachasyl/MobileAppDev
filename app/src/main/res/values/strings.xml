@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">NUMADFa_ZacharySylvane</string>
+    <string name="buttonA">A</string>
+    <string name="buttonB">B</string>
+    <string name="buttonC">C</string>
+    <string name="buttonD">D</string>
+    <string name="buttonE">E</string>
+    <string name="buttonF">F</string>
+
+
 </resources>
