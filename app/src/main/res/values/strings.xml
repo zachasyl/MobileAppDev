@@ -6,6 +6,8 @@
     <string name="buttonD">D</string>
     <string name="buttonE">E</string>
     <string name="buttonF">F</string>
+    <string name="pressed">Pressed:</string>
+    <string name="empty">-</string>
 
 
 </resources>
