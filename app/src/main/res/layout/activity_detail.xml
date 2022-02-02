@@ -7,9 +7,10 @@
     tools:context=".DetailActivity">
 
     <Button
-        android:id="@+id/button20"
+        android:id="@+id/B"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onClick"
         android:text="@string/buttonB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,56 +19,82 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button25"
+        android:id="@+id/A"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onClick"
         android:text="@string/buttonA"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button20"
+        app:layout_constraintEnd_toStartOf="@+id/B"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button26"
+        android:id="@+id/C"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onClick"
         android:text="@string/buttonC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button20"
+        app:layout_constraintStart_toEndOf="@+id/B"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button27"
+        android:id="@+id/D"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onClick"
         android:text="@string/buttonD"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button28"
+        app:layout_constraintEnd_toStartOf="@+id/E"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button25"
+        app:layout_constraintTop_toBottomOf="@+id/A"
         app:layout_constraintVertical_bias="0.126" />
 
     <Button
-        android:id="@+id/button28"
+        android:id="@+id/E"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onClick"
         android:text="@string/buttonE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button20"
-        app:layout_constraintVertical_bias="0.129" />
+        app:layout_constraintTop_toBottomOf="@+id/B"
+        app:layout_constraintVertical_bias="0.126" />
 
     <Button
-        android:id="@+id/button29"
+        android:id="@+id/F"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onClick"
         android:text="@string/buttonF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button28"
-        app:layout_constraintTop_toBottomOf="@+id/button26"
-        app:layout_constraintVertical_bias="0.129" />
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toEndOf="@+id/E"
+        app:layout_constraintTop_toBottomOf="@+id/C"
+        app:layout_constraintVertical_bias="0.126" />
+
+    <TextView
+        android:id="@+id/PressedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pressed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/E"
+        app:layout_constraintVertical_bias="0.286" />
+
+    <TextView
+        android:id="@+id/PressedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty"
+        app:layout_constraintStart_toEndOf="@+id/PressedText"
+        app:layout_constraintTop_toTopOf="@+id/PressedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
