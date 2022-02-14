@@ -2,17 +2,16 @@ package neu.edu.madcourse.numadfa_zacharysylvane;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Button button;
     Button newActivity;
+    Button collectorActivity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +19,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button = (Button) findViewById(R.id.button1);
         newActivity = (Button) findViewById(R.id.button2);
+        collectorActivity = (Button) findViewById(R.id.linkCollector);
+//        TextView L = findViewById(R.id.google);
+//        L.setMovementMethod(LinkMovementMethod.getInstance());
+//        L.setText(Html.fromHtml(text));
+//        String url = "http://www.example.com";
+//        Intent i = new Intent(Intent.ACTION_VIEW);
+//        i.setData(Uri.parse(url));
+//        startActivity(i);
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),
-                        "Zachary Sylvane" + "\n" + "sylvane.z@northeastern.edu", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, Personal.class);
+                startActivity(intent);
+//                Toast.makeText(getApplicationContext(),
+//                        "Zachary Sylvane" + "\n" + "sylvane.z@northeastern.edu", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -33,6 +43,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        collectorActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Recycler.class);
                 startActivity(intent);
             }
         });
