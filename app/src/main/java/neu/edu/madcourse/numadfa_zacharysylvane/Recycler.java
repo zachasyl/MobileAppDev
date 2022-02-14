@@ -135,12 +135,17 @@ public class Recycler extends AppCompatActivity implements LinkDialogListener {
             public void onClick(int position) {
                 itemList.get(position).onClick(position);
                 ItemCard x = itemList.get(position);
-                String y = x.getURL();
+                String url = x.getURL();
 
+                if (!url.startsWith("http://" ) && !url.startsWith("https://")) {
+                    url = "http://" + url;
+                }
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(y));
-                startActivity(i);
-
+                i.setData(Uri.parse(url));
+                try {
+                    startActivity(i);
+                }catch (Exception e) {
+                }
 
                 rviewAdapter.notifyItemChanged(position);
             }
