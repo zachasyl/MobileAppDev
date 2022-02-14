@@ -7,11 +7,12 @@ public class ItemCard implements ItemClickListener {
     private boolean itemChecked;
     private int image;
 
-    public ItemCard(String name, String url, boolean itemChecked, int image) {
+    public ItemCard(String name, String url, int image) {
         this.name = name;
         this.url = url;
         this.itemChecked = itemChecked;
         this.image = image;
+
 
     }
 
@@ -28,13 +29,10 @@ public class ItemCard implements ItemClickListener {
         return url;
     }
 
-    public boolean isItemChecked() {
-        return itemChecked;
-    }
 
 
     @Override
-    public void onCheckBoxClick(int position) {
+    public void onClick(int position) {
         itemChecked = !itemChecked;
     }
 }

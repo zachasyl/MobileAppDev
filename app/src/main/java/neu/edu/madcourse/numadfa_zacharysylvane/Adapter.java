@@ -24,6 +24,8 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         this.listener = listener;
     }
 
+
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card, parent, false);
