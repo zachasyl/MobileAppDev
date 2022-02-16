@@ -99,8 +99,7 @@ public class Recycler extends AppCompatActivity implements LinkDialogListener {
     }
 
     private void initialItemData(Bundle savedInstanceState) {
-
-        // Not the first time to open this Activity
+        // Not first time to open this Activity
         if (savedInstanceState != null && savedInstanceState.containsKey(NUMBER_OF_ITEMS)) {
             if (itemList == null || itemList.size() == 0) {
 
