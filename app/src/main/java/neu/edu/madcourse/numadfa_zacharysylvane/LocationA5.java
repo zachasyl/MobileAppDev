@@ -63,11 +63,6 @@ public class LocationA5 extends AppCompatActivity {
 
                 // user has denied the first time. now we are at time 2,3,4, etc
 
-                new AlertDialog.Builder(this)
-                        .setTitle("Required Location Permission")
-                        .setMessage("you have to give this permission");
-
-
 
             } else {
                 // request the permission (this is the first time)
