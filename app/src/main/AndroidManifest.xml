@@ -21,6 +21,7 @@
         <activity android:name=".DetailActivity"></activity>
         <activity android:name=".Recycler"></activity>
         <activity android:name=".Personal"></activity>
+        <activity android:name=".LocationA5"></activity>
 
     </application>
 
