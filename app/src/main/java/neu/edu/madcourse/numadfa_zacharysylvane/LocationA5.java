@@ -4,9 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -22,23 +19,38 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+// Based on code from the following:
+//https://developer.android.com/training/location/retrieve-current
+//https://developer.android.com/training/permissions/requesting
+
 
 public class LocationA5 extends AppCompatActivity {
+
+
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 1;
     Button fetch_location;
     TextView user_location;
     private FusedLocationProviderClient myFusedLocationClient;
+    private static final String KEY_TEXT_VALUE = "textValue";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_location);
-
         fetch_location = (Button) findViewById(R.id.fetch_location);
         user_location = findViewById(R.id.user_location);
+
+        if (savedInstanceState != null) {
+            // calls savedinstancestate to get the data from before screen turn.
+            CharSequence savedText = savedInstanceState.getCharSequence(KEY_TEXT_VALUE);
+            // changed orientation, set data.
+            user_location.setText(savedText);
+
+        }
         myFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        Double latitude;
-        Double longitude;
 
         fetch_location.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +61,15 @@ public class LocationA5 extends AppCompatActivity {
             }
         });
 
+    }
+
+//    whenever Android destroys and recreates your Activity on orientation change,
+//    it calls onSaveInstanceState() and then oncreate. that which is saved in
+//    the onsaveinstance we can get back from our oncreate code concerning savedinstance.
+    @Override
+    protected void onSaveInstanceState (Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putCharSequence(KEY_TEXT_VALUE, user_location.getText());
     }
     private void fetchLocation() {
         // Permission already granted
@@ -83,5 +104,20 @@ public class LocationA5 extends AppCompatActivity {
                     MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
         }
     }
+//    the only purpose of this right now is that  immediately when access is granted
+//    for the first time, the user will not need to click the button again
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull @org.jetbrains.annotations.NotNull String[] permissions, @NonNull @org.jetbrains.annotations.NotNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION){
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                fetchLocation();
+            }
+                else{
+
+                }
+            }
+
+        }
 }
 
