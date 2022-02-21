@@ -27,7 +27,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 public class LocationA5 extends AppCompatActivity {
 
 
-    private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 1;
+    private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     Button fetch_location;
     TextView user_location;
     private FusedLocationProviderClient myFusedLocationClient;
@@ -74,7 +74,7 @@ public class LocationA5 extends AppCompatActivity {
     private void fetchLocation() {
         // Permission already granted
         if (ContextCompat.checkSelfPermission(LocationA5.this,
-                Manifest.permission.ACCESS_COARSE_LOCATION)
+                Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             //permission granted therefore we wont get following error
 
@@ -100,8 +100,8 @@ public class LocationA5 extends AppCompatActivity {
         }else{ //not granted
 
             ActivityCompat.requestPermissions(LocationA5.this,
-                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
-                    MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
         }
     }
 //    the only purpose of this right now is that  immediately when access is granted
@@ -109,7 +109,7 @@ public class LocationA5 extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull @org.jetbrains.annotations.NotNull String[] permissions, @NonNull @org.jetbrains.annotations.NotNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION){
+        if(requestCode == MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION){
             if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 fetchLocation();
             }
