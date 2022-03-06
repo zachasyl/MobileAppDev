@@ -66,11 +66,21 @@ public class AtYourService extends AppCompatActivity {
                 Integer i = 1;
 
                 while (true ) {
+                        // the first JSONObject that returns may not be an exact match
+                        // for isntance, if a user types in "a", multiple drinks with the letter a
+                        // may show up. We want a return only if the first object's name is an exact match with the ingredient
+                        //for instance margarita will have multiple margaritas but the first is "margarita"
+                        // our search is for finding an exact match to learn the ingredients.
+                        if (!((jObject.getJSONArray("drinks").getJSONObject(0).get("strDrink")).toString().equalsIgnoreCase(user_Drink.getText().toString()))){
+                            break;
+                        }
                         String ingredient = "strIngredient" + i;
                         one_ingredient = jObject.getJSONArray("drinks").getJSONObject(0).get(ingredient).toString();
+                        // When there is no longer an ingredient
                         if (one_ingredient.equals("null")) {
                             break;
                         }
+
 
                         all_ingreditents += one_ingredient + "\n";
                         bitmap = BitmapFactory.decodeStream((InputStream) new URL(
@@ -93,9 +103,16 @@ public class AtYourService extends AppCompatActivity {
                         if (all_ingreditents.length() >0 ) {
                             result_view.setText((CharSequence) all_ingreditents);
                             f.setImageBitmap(bitmap);
+                        }
+                        else{
+                                // Either there were multiple drinks but the first was
+                                // not an exact match, or there was no match.
+                                result_view.setText("No Drink Found.");
+                                f.setImageBitmap(null);
+                            }
 
                         }
-                }
+
             });
         }
     }
