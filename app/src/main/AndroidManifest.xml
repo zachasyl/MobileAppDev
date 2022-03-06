@@ -26,6 +26,8 @@
         <activity android:name=".Recycler"></activity>
         <activity android:name=".Personal"></activity>
         <activity android:name=".LocationA5"></activity>
+        <activity android:name=".AtYourService"></activity>
+
 
     </application>
 

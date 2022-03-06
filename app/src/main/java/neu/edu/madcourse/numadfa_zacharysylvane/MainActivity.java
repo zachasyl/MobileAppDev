@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     Button newActivity;
     Button collectorActivity;
     Button myLocation;
+    Button AtYourService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         newActivity = (Button) findViewById(R.id.button2);
         collectorActivity = (Button) findViewById(R.id.linkCollector);
         myLocation = (Button) findViewById(R.id.myLocation);
+        AtYourService = (Button) findViewById(R.id.AtYourService);
+
 //        TextView L = findViewById(R.id.google);
 //        L.setMovementMethod(LinkMovementMethod.getInstance());
 //        L.setText(Html.fromHtml(text));
@@ -63,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        AtYourService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AtYourService.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 }
