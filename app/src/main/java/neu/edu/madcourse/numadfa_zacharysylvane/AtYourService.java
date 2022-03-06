@@ -91,6 +91,16 @@ public class AtYourService extends AppCompatActivity {
 
                     }
             } catch (IOException | JSONException e) {
+                textHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        TextView result_view = (TextView)findViewById(R.id.result_textview);
+                        final ImageView f = (ImageView)findViewById(R.id.imageView);
+                        result_view.setText("Error No Drink Found.");
+                        f.setImageBitmap(null);
+                    }
+                });
                 e.printStackTrace();
             }
             textHandler.post(new Runnable() {
