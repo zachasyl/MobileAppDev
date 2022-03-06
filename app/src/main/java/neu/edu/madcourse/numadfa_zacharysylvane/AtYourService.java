@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +14,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
-
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 public class AtYourService extends AppCompatActivity {
 
@@ -35,6 +38,7 @@ public class AtYourService extends AppCompatActivity {
         setContentView(R.layout.activity_web_service);
         user_Drink = (EditText)findViewById(R.id.user_Drink);
 
+
     }
 
     public void runOnRunnableThread(View view){
@@ -47,6 +51,7 @@ public class AtYourService extends AppCompatActivity {
 
         String one_ingredient = "";
         String all_ingreditents = "";
+        private Bitmap bitmap = null;
 
         @Override
         public void run(){
@@ -68,6 +73,10 @@ public class AtYourService extends AppCompatActivity {
                         }
 
                         all_ingreditents += one_ingredient + "\n";
+                        bitmap = BitmapFactory.decodeStream((InputStream) new URL(
+                                jObject.getJSONArray("drinks").getJSONObject(0).get("strDrinkThumb").toString()
+                        ).getContent());
+
                         i += 1;
 
                     }
@@ -79,9 +88,12 @@ public class AtYourService extends AppCompatActivity {
                 public void run() {
 
                     TextView result_view = (TextView)findViewById(R.id.result_textview);
+                    final ImageView f = (ImageView)findViewById(R.id.imageView);
 
                         if (all_ingreditents.length() >0 ) {
                             result_view.setText((CharSequence) all_ingreditents);
+                            f.setImageBitmap(bitmap);
+
                         }
                 }
             });
