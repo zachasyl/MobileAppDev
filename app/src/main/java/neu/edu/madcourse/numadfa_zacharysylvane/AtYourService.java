@@ -18,6 +18,8 @@ import java.io.InputStream;
 import java.net.URL;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.widget.ProgressBar;
+
 
 public class AtYourService extends AppCompatActivity {
 
@@ -48,6 +50,8 @@ public class AtYourService extends AppCompatActivity {
     }
 
     class runnableThread implements Runnable{
+        private ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar2);
+
 
         String one_ingredient = "";
         String all_ingreditents = "";
@@ -55,6 +59,13 @@ public class AtYourService extends AppCompatActivity {
 
         @Override
         public void run(){
+
+                textHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressBar.setVisibility(View.VISIBLE);
+                    }
+                });
             JSONObject jObject;
 
             try {
@@ -120,6 +131,7 @@ public class AtYourService extends AppCompatActivity {
                                 result_view.setText("No Drink Found.");
                                 f.setImageBitmap(null);
                             }
+                            progressBar.setVisibility(View.INVISIBLE);
 
                         }
 
